@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "emotion_tracker";
-    private $username = "root";
-    private $password = "";
+    private $db_name = "mantauemosi_db";
+    private $username = "mantauemosi";
+    private $password = "m42AOB+tf)4Zmr+3U4";
     public $conn;
 
     public function getConnection() {
