@@ -1,6 +1,6 @@
 <?php
 // Application configuration
-define('BASE_URL', 'http://localhost/rpl2e/');
+define('BASE_URL', 'https://mantauemosi.sgp.dom.my.id/');
 
 // Start session if not already started
 if (session_status() === PHP_SESSION_NONE) {
