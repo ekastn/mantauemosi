@@ -1,30 +1,27 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # Handle Authorization Header
-    RewriteCond %{HTTP:Authorization} .
-    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Redirect to HTTPS (uncomment if you have SSL)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     
-    # Redirect Trailing Slashes If Not A Folder...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
-    
-    # Send Requests To Front Controller...
-    RewriteCond %{REQUEST_FILENAME} !-d
+    # Allow direct access to files and directories that exist
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteCond %{REQUEST_FILENAME} !-d
     
-    # Handle Authorization Header
-    SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    # Rewrite all other requests to index.php
+    RewriteRule ^(.*)$ index.php [L,QSA]
 </IfModule>
 
 # Disable directory listing
 Options -Indexes
 
-# PHP error handling for development
-# php_flag display_startup_errors on
-# php_flag display_errors on
-# php_flag html_errors on
-# php_flag log_errors on
-# php_value error_log /path/to/php-error.log
+# Set default charset
+AddDefaultCharset UTF-8
+
+# PHP configuration
+php_value upload_max_filesize 10M
+php_value post_max_size 12M
+php_value max_execution_time 300
+php_value max_input_time 300
+php_value session.gc_maxlifetime 1440
