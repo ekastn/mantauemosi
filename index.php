@@ -18,7 +18,7 @@ require_once $basePath . '/config/database.php';
 date_default_timezone_set('Asia/Jakarta');
 
 // Get the request URI and remove the base path
-$requestUri = str_replace(BASE_PATH, '', $_SERVER['REQUEST_URI']);
+$requestUri = str_replace('BASE_PATH', '', $_SERVER['REQUEST_URI']);
 $requestUri = strtok($requestUri, '?'); // Remove query string
 
 // Remove trailing slash
