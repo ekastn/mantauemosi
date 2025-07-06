@@ -1,10 +1,17 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "mantauemosi_db";
-    private $username = "mantauemosi";
-    private $password = "m42AOB+tf)4Zmr+3U4";
+    private $host;
+    private $db_name;
+    private $username;
+    private $password;
     public $conn;
+
+    public function __construct() {
+        $this->host = getenv('DB_HOST');
+        $this->db_name = getenv('DB_DATABASE');
+        $this->username = getenv('DB_USERNAME');
+        $this->password = getenv('DB_PASSWORD');
+    }
 
     public function getConnection() {
         $this->conn = null;

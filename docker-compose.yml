@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    volumes:
+      - .:/var/www/html
+    environment:
+      BASE_URL: '/'
+      DB_HOST: db
+      DB_DATABASE: mantauemosi_db
+      DB_USERNAME: mantauemosi
+      DB_PASSWORD: password
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: mantauemosi_db
+      MYSQL_USER: mantauemosi
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

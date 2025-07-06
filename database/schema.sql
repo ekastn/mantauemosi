@@ -1,6 +1,6 @@
 -- Create database
-CREATE DATABASE IF NOT EXISTS emotion_tracker;
-USE emotion_tracker;
+-- CREATE DATABASE IF NOT EXISTS emotion_tracker;
+-- USE emotion_tracker;
 
 -- Create User table
 CREATE TABLE IF NOT EXISTS users (
